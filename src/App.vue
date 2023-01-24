@@ -24,6 +24,21 @@
           </span>
         </a-col>
       </a-row>
+      <a-row type="flex" justify="space-between" align="bottom">
+        <div style="height: 50px"/>
+      </a-row>
+      <a-row type="flex" justify="space-between" align="bottom">
+        <a-col :lg="{ span: 2, offset: 11 }" :xs="{ span: 2, offset: 11 }">
+          <a-space :size="20">
+            <a-tooltip placement="topRight" title="后端地址">
+              <a href="https://github.com/qyzhg/short" target="_blank" style="color: black"><a-icon type="github" /></a>
+            </a-tooltip>
+            <a-tooltip placement="topLeft" title="前端地址">
+            <a href="https://github.com/qyzhg/short-fe" target="_blank" style="color: black"><a-icon type="github" /></a>
+          </a-tooltip>
+          </a-space>
+        </a-col>
+      </a-row>
     <a-modal v-model="visible" title="生成短链成功">
       <template slot="footer">
         <a-button key="submit" size="small" @click="visible=false">
