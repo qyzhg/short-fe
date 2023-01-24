@@ -1,26 +1,29 @@
 <template>
   <div id="app">
-    <div>
-      <a-row type="flex" justify="space-around" align="middle">
-          <a-space direction="vertical" :size="100">
-            <span style="width: 100%"/>
-            <div style="width: 600px">
-              <a-space direction="vertical" :size="10" style="width: 100%">
-                <div style="width: 100%;">
-                  <img src="/static/img.png" alt="logo" style="display: block;margin: auto;width: 300px;"/>
-                </div>
-                <div>
-                  <a-input-search style="width: 100%" @search="create" v-model="url">
-                    <a-button slot="enterButton">
-                      <a-icon type="login" />
-                    </a-button>
-                  </a-input-search>
-                </div>
-              </a-space>
-            </div>
-          </a-space>
+      <a-row type="flex" justify="space-between" align="bottom">
+        <div style="height: 20px"/>
       </a-row>
-    </div>
+      <a-row type="flex" justify="space-between" align="bottom">
+        <a-col :lg="{ span: 6, offset: 9 }" :xs="{ span: 12, offset: 6 }">
+          <div style="width: 100%">
+            <img src="/static/img.png" alt="logo" style="display: block;margin: auto;width: 100%;"/>
+          </div>
+        </a-col>
+      </a-row>
+      <a-row type="flex" justify="space-between" align="bottom">
+        <div style="height: 20px"/>
+      </a-row>
+      <a-row type="flex" justify="space-between" align="bottom">
+        <a-col :lg="{ span: 12, offset: 6 }" :xs="{ span: 20, offset: 2 }">
+          <span>
+            <a-input-search style="width: 100%" @search="create" v-model="url">
+              <a-button slot="enterButton">
+                <a-icon type="login" />
+              </a-button>
+            </a-input-search>
+          </span>
+        </a-col>
+      </a-row>
     <a-modal v-model="visible" title="生成短链成功">
       <template slot="footer">
         <a-button key="submit" size="small" @click="visible=false">
@@ -82,7 +85,7 @@ export default {
           this.visible = true
           return
         }
-        let errMsg = res.data.err?":"+res.data.err:""
+        let errMsg = res.data.err?":"+res.data.err: ""
         this.$message.error("短链生成失败"+errMsg)
       }catch (e) {
         this.$message.error(e.message || "短链接生成错误")
