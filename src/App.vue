@@ -28,15 +28,18 @@
         <div style="height: 50px"/>
       </a-row>
       <a-row type="flex" justify="space-between" align="bottom">
-        <a-col :lg="{ span: 2, offset: 11 }" :xs="{ span: 2, offset: 11 }">
-          <a-space :size="20">
-            <a-tooltip placement="topRight" title="后端地址">
-              <a href="https://github.com/qyzhg/short" target="_blank" style="color: black"><a-icon type="github" /></a>
-            </a-tooltip>
-            <a-tooltip placement="topLeft" title="前端地址">
-            <a href="https://github.com/qyzhg/short-fe" target="_blank" style="color: black"><a-icon type="github" /></a>
-          </a-tooltip>
-          </a-space>
+        <a-col :lg="{ span: 2, offset: 11 }" :xs="{ span: 2, offset: 11 }" style="text-align: center;">
+          <a-popover placement="rightBottom">
+            <template slot="content">
+              <p>
+                <a href="https://github.com/qyzhg/short" target="_blank" style="color: black"><a-icon type="github" /> 后端地址</a>
+              </p>
+              <p>
+                <a href="https://github.com/qyzhg/short-fe" target="_blank" style="color: black"><a-icon type="github" /> 前端地址</a>
+              </p>
+            </template>
+            <a-icon type="github" style="font-size: 25px;"/>
+          </a-popover>
         </a-col>
       </a-row>
     <a-modal v-model="visible" title="生成短链成功">
