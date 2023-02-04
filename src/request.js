@@ -25,3 +25,11 @@ export async function create(origin_url) {
         {"origin_url":origin_url}
     )
 }
+
+export async function get_qr_code(url) {
+    return request(
+        "https://xn--s7y.fun/get_qr_code",
+        METHOD.POST,
+        {"url":url}
+    )
+}

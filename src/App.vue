@@ -69,13 +69,18 @@
             </a-button>
           </span>
         </a-form-item>
+        <a-form-item label="二维码" v-if="b64qrCode">
+          <span>
+            <img id="qrPng" :src="b64qrCode"  alt="二维码"/>
+          </span>
+        </a-form-item>
       </a-form>
     </a-modal>
   </div>
 </template>
 
 <script>
-import {create} from "@/request";
+import {create, get_qr_code} from "@/request";
 
 export default {
   name: 'App',
@@ -84,6 +89,7 @@ export default {
       url: undefined,
       visible: false,
       short: undefined,
+      b64qrCode: undefined
     }
   },
   created () {
@@ -100,6 +106,8 @@ export default {
         let res = await create(this.url)
         if (res.data.ok){
           this.short = res.data.data
+          let qrCodeRes = await get_qr_code(`https://xn--s7y.fun/${this.short}`)
+          this.b64qrCode = "data:image/png;base64," + qrCodeRes.data.data.b64_qr_code
           this.visible = true
           return
         }
